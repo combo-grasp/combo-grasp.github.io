@@ -201,7 +201,7 @@ Empirical evaluations demonstrate that COMBO-Grasp significantly improves task s
         <!-- Interpolating. -->
         <div class="content has-text-justified">
           <p>
-              (1) A VAE is trained to learn a skill latent representation by reconstructing a short-horizon action sequence randomly sampled from the task-agnostic play dataset.
+            A constraint policy generates stabilizing poses for one arm, enabling effective bimanual occluded grasping. The teacher constraint policy is trained in simulation using a novel self-supervised data collection method that leverages force-closure principles to ensure object stability. By collecting diverse constraint poses across multiple objects without human supervision, the trained policy provides robust stabilization, accelerating the learning of the grasping policy and improving overall task performance.
         </p>
         </div>
         </div>
@@ -220,7 +220,7 @@ Empirical evaluations demonstrate that COMBO-Grasp significantly improves task s
         <!-- Interpolating. -->
         <div class="content has-text-justified">
           <p>
-              (1) A VAE is trained to learn a skill latent representation by reconstructing a short-horizon action sequence randomly sampled from the task-agnostic play dataset.
+              COMBO-Grasp optimizes the grasping policy while refining the constraint policy for better coordination. The teacher constraint policy, initially trained in a self-supervised manner, generates stabilizing poses, but these may not be optimal for grasp execution. To improve coordination, a value function-guided refinement is introduced, where gradients from the grasping policy’s value function adjust the constraint policy’s output during RL training. This ensures that the stabilizing pose is dynamically optimized to maximize grasp success, leading to more efficient and robust bimanual manipulation.
           </p>
         </div>
       </div>
@@ -242,7 +242,7 @@ Empirical evaluations demonstrate that COMBO-Grasp significantly improves task s
         <!-- Interpolating. -->
         <div class="content has-text-justified">
           <p>
-              (1) A VAE is trained to learn a skill latent representation by reconstructing a short-horizon action sequence randomly sampled from the task-agnostic play dataset.
+              The teacher policies, trained with privileged information, are distilled into student policies that process point clouds and proprioceptive states, enabling robust sim-to-real transfer and generalization to unseen objects.
           </p>
         </div>
       </div>
@@ -268,11 +268,11 @@ Empirical evaluations demonstrate that COMBO-Grasp significantly improves task s
                       type="video/mp4">
             </video>
           </div>
-        <div class="content has-text-justified">
-          <p>
-              The averaged normalised improved the Earth-Mover distance (EMD) and standard deviation is reported for each method.
-          </p>
-        </div>
+        <!-- <div class="content has-text-justified"> -->
+        <!--   <p> -->
+        <!--       The averaged normalised improved the Earth-Mover distance (EMD) and standard deviation is reported for each method. -->
+        <!--   </p> -->
+        <!-- </div> -->
         </div>
         <br/>
       </div>
