@@ -50,7 +50,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">COMBO-Grasp: Learning Constraint-Based Manipulation for Bimanual Occluded Grasping</h1>
+          <h1 class="title is-2 publication-title">COMBO-Grasp: Learning Constraint-Based Manipulation for Bimanual Occluded Grasping</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://junjungoal.github.io/">Jun Yamada</a>,</span>
@@ -121,12 +121,9 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
         <div class="columns is-vcentered is-centered">
-            <img src="./static/videos/action_render.gif"
+            <img src="./static/videos/teaser.gif"
                  class="interpolation-image"
-                 alt="D-Cubed Overview" width='40%'/>
-            <img src="./static/videos/real_crop.gif"
-                 class="interpolation-image"
-                 alt="D-Cubed Overview" width='40%'/>
+                 alt="Teaser" width='60%'/>
         </div>
       <h2 class="subtitle has-text-centered">
           <em>D-Cubed</em> optimises a trajectory for dexterous deformable object manipualtion tasks.
@@ -185,39 +182,72 @@ Empirical evaluations demonstrate that COMBO-Grasp significantly improves task s
 
         <!-- Interpolating. -->
         <div class="columns is-vcentered is-centered">
-            <img src="./static/images/teaser.png"
+            <img src="./static/images/pipeline.png"
                  class="interpolation-image"
-                 alt="D-Cubed Overview" width='60%'/>
+                 alt="COMBO-Grasp Overview" width='80%'/>
         </div>
         <div class="content has-text-justified">
           <p>
-              We propose D-Cubed, Latent Diffusion for Trajectory Optimisation in Dexterous Deformable Manipulation. D-Cubed is a novel trajectory optimisation approach that leverages a latent diffusion model (LDM) trained on a task-agnostic play dataset of a robot hand that contains various representative hand motions, such as closing and opening the hand, and moving individual fingers.
+              COMBO-Grasp is a bimanual robotic system designed for grasping objects in scenarios where the desired grasp pose is occluded due to environmental constraints such as table surface. The system leverages two coordinated policies: a constraint policy that stabilizes the object using one arm and a grasping policy that reorients and grasps the object using the other arm. By integrating value function-guided policy coordination and self-supervised learning, COMBO-Grasp efficiently learns robust bimanual grasping strategies, achieving superior performance in both simulated and real-world environments.
           </p>
         </div>
         </div>
         <br/>
       </div>
-    <hr>
     <br>
+    <h3 class="title is-5">(1) Self-supervised Teacher Constraint Policy Training</h3>
     <div class="columns is-centered">
       <div class="column is-full-width">
         <!-- Interpolating. -->
-        <div class="columns is-vcentered is-centered">
-            <img src="./static/images/method.png"
-                 class="interpolation-image"
-                 alt="Generating imagined trajectories for distillation."/>
-        </div>
         <div class="content has-text-justified">
           <p>
               (1) A VAE is trained to learn a skill latent representation by reconstructing a short-horizon action sequence randomly sampled from the task-agnostic play dataset.
-              (2) A latent diffusion model (LDM) is trained to compose skills into a skill trajectory, representing a long-horizon action trajectory sampled from the dataset. The LDM, capable of generative diverse skill trajectories, effectively facilitates exploration in the large state space of dexterous deformable object manipulation tasks.
-              (3) During trajectory optimisation, the LDM generates a small number of skill trajectories. These trajectories are evaluated in a simulator, and the best sequence, characterised by achieving the minimum cost, is selected for the subsequent reverse process.
         </p>
         </div>
         </div>
-        <br/>
+      <div class="column is-full-width">
+        <div class="columns is-vcentered is-centered">
+            <img src="./static/images/self_supervised.gif"
+                 class="interpolation-image"
+                 alt="Refinement" width='90%'/>
+        </div>
+
       </div>
     </div>
+    <h3 class="title is-5">(2) Teacher Policy Training with Constraint Refinement</h3>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!-- Interpolating. -->
+        <div class="content has-text-justified">
+          <p>
+              (1) A VAE is trained to learn a skill latent representation by reconstructing a short-horizon action sequence randomly sampled from the task-agnostic play dataset.
+          </p>
+        </div>
+      </div>
+      <div class="column is-full-width">
+        <div class="columns is-vcentered is-centered">
+            <img src="./static/images/refinement.png"
+                 class="interpolation-image"
+                 alt="Refinement" width='90%'/>
+            <!-- <video id="matting-video" controls playsinline width="80%"> -->
+            <!--   <source src="./static/videos/sim_result.mp4" -->
+            <!--           type="video/mp4"> -->
+            <!-- </video> -->
+        </div>
+      </div>
+    </div>
+    <h3 class="title is-5">(3) Teacher-Student Distillation</h3>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!-- Interpolating. -->
+        <div class="content has-text-justified">
+          <p>
+              (1) A VAE is trained to learn a skill latent representation by reconstructing a short-horizon action sequence randomly sampled from the task-agnostic play dataset.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
     <!--/ Animation. -->
 
 
@@ -233,9 +263,10 @@ Empirical evaluations demonstrate that COMBO-Grasp significantly improves task s
         <!-- Interpolating. -->
         <h3 class="title is-4">Simulated Experiments</h3>
         <div class="columns is-vcentered is-centered">
-            <img src="./static/images/qualitative_result.png"
-                 class="interpolation-image"
-                 alt="Generating imagined trajectories for distillation."/>
+            <video id="matting-video" controls playsinline width="100%">
+              <source src="./static/videos/sim_result.mp4"
+                      type="video/mp4">
+            </video>
           </div>
         <div class="content has-text-justified">
           <p>
@@ -254,10 +285,10 @@ Empirical evaluations demonstrate that COMBO-Grasp significantly improves task s
         <div class="content has-text-centered">
           <!-- <h2 class="title is-3">Visual Effects</h2> -->
           <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/folding.mp4"
+              <source src="./static/videos/cracker_box_mod.mp4"
                     type="video/mp4">
           </video>
-          <p>Folding</p>
+          <p>Box-Medium-Heavy (Seen)</p>
         </div>
       </div>
       <!--/ Visual Effects. -->
@@ -268,10 +299,10 @@ Empirical evaluations demonstrate that COMBO-Grasp significantly improves task s
         <div class="columns is-centered has-text-centered">
           <div class="column content">
             <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/rope.mp4"
+              <source src="./static/videos/large_box_mod.mp4"
                       type="video/mp4">
             </video>
-          <p>Rope</p>
+          <p>Box-Large-Light</p>
           </div>
 
         </div>
@@ -281,10 +312,10 @@ Empirical evaluations demonstrate that COMBO-Grasp significantly improves task s
         <div class="columns is-centered has-text-centered">
           <div class="column content">
             <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/dumpling.mp4"
+              <source src="./static/videos/puzzle_mod.mp4"
                       type="video/mp4">
             </video>
-          <p>Dumpling</p>
+          <p>Box-Small-Heavy</p>
           </div>
 
         </div>
@@ -297,10 +328,10 @@ Empirical evaluations demonstrate that COMBO-Grasp significantly improves task s
         <div class="columns is-centered has-text-centered">
           <div class="column content">
             <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/flip.mp4"
+              <source src="./static/videos/keyboard_mod.mp4"
                       type="video/mp4">
             </video>
-          <p>Flip</p>
+          <p>Keyboard</p>
           </div>
 
         </div>
@@ -310,10 +341,10 @@ Empirical evaluations demonstrate that COMBO-Grasp significantly improves task s
         <div class="columns is-centered has-text-centered">
           <div class="column content">
             <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/bun.mp4"
+              <source src="./static/videos/bag_mod.mp4"
                       type="video/mp4">
             </video>
-          <p>Bun</p>
+          <p>Bag</p>
           </div>
 
         </div>
@@ -323,10 +354,10 @@ Empirical evaluations demonstrate that COMBO-Grasp significantly improves task s
         <div class="columns is-centered has-text-centered">
           <div class="column content">
             <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/wrap.mp4"
+              <source src="./static/videos/snack_box_mod.mp4"
                       type="video/mp4">
             </video>
-          <p>Wrap</p>
+          <p>Round Box</p>
           </div>
 
         </div>
