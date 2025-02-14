@@ -220,7 +220,7 @@ Empirical evaluations demonstrate that COMBO-Grasp significantly improves task s
         <!-- Interpolating. -->
         <div class="content has-text-justified">
           <p>
-              COMBO-Grasp optimises the grasping policy while refining the constraint policy for better coordination. The teacher constraint policy, initially trained in a self-supervised manner, generates stabilizing poses, but these may not be optimal for grasp execution. To improve coordination, a value function-guided refinement is introduced, where gradients from the grasping policy’s value function adjust the constraint policy’s output during RL training. This ensures that the stabilizing pose is dynamically optimized to maximize grasp success, leading to improved task performance.
+              COMBO-Grasp optimises the grasping policy while refining the constraint policy for better coordination. The teacher constraint policy, initially trained in a self-supervised manner, generates stabilizing poses, but these may not be optimal for grasp execution. To improve coordination, a value function-guided refinement is introduced, where gradients from the grasping policy’s value function adjust the constraint policy’s output during RL training. This improves bimanual coordination, resulting in better task performance.
           </p>
         </div>
       </div>
